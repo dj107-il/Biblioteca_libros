@@ -38,22 +38,27 @@ class Program
             {
                 case 1:
                     //proximamente la funcion con los menú de libros
+                    MostrarMenuLibros();
                     break;
 
                 case 2:
                     //Proximamente la función del menú de los usuarios.
+                    MostrarMenuUsuarios();
                     break;
 
                 case 3:
                     //Proximamente la función del menu de los prestamos.
+                    MostrarMenuPrestamos();
                     break;
 
                 case 4: 
                     //Proximamente la función del menu de busqueda y reportes.
+                    MostrarMenuBusquedaReportes();
                     break;
 
                 case 5: 
                     //Proximamente la función del menu de Guardar / Cargar datos.
+                    MostrarMenuGuardarCargarDatos();
                     break;
 
                 case 6: 
@@ -94,4 +99,10 @@ class Program
             Console.WriteLine("respuesta invalida. Se canceló la salida...");
         }
     }
+
+    static void MostrarMenuLibros(){}
+    static void MostrarMenuUsuarios(){}
+    static void MostrarMenuPrestamos(){}
+    static void MostrarMenuBusquedaReportes(){}
+    static void MostrarMenuGuardarCargarDatos(){}
 }
