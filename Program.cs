@@ -124,7 +124,7 @@ class Program
             switch (menu_libros)
             {
                 case 1:
-                    //Funcion registrar usuario
+                    //Funcion registrar libro
                     RegistrarLibro();
                     break;
 
@@ -153,7 +153,7 @@ class Program
                     Console.Write("Presiona Enter para continuar... ");
                     Console.ReadLine();
                     break;
-                
+
                 default:
                     Console.WriteLine("Opción invalida. Intentalo nuevamente");
                     Console.Write("Presiona Enter para continuar...");
@@ -169,9 +169,9 @@ class Program
         Console.Clear();
         Console.WriteLine("===  Registro de libro  ===");
         Console.Write("Señor usuario ingrese el ID/ISBN del libro: ");
-        string id = Console.ReadLine() ?? ""; 
+        string id = Console.ReadLine() ?? "";
 
-        Console.Write("Ingresa el titulo del libro: "); 
+        Console.Write("Ingresa el titulo del libro: ");
         string titulo = Console.ReadLine() ?? "";
 
         Console.Write("Ingresa el autor del libro: ");
@@ -183,7 +183,7 @@ class Program
         Console.Write("Ingresa el año de publicación del libro: ");
         string año_publicacion = Console.ReadLine() ?? "";
 
-        Console.WriteLine($"\n>> El libro {titulo} de {autor} se ha registrado exitosamente."); 
+        Console.WriteLine($"\n>> El libro {titulo} de {autor} se ha registrado exitosamente.");
         Console.Write("\nPresiona Enter para continuar...");
         Console.ReadLine();
     }
@@ -215,7 +215,7 @@ class Program
                     //funcion para listar todos los libros disponibles
                     ListarLibrosDisponibles();
                     break;
-                case 3: 
+                case 3:
                     //Función para listar todos los libros prestados
                     ListarLibrosPrestados();
                     break;
@@ -226,13 +226,13 @@ class Program
                     Console.ReadLine();
                     break;
 
-                default: 
+                default:
                     Console.WriteLine("Opcion invalida, intetalo nuevamente.");
                     Console.Write("Presiona Enter para continuar...");
                     Console.ReadLine();
                     break;
             }
-        }while(menu_listar_libros != 4);
+        } while (menu_listar_libros != 4);
     }
 
     static void ListarTodosLibros()
@@ -250,7 +250,7 @@ class Program
     }
 
     static void ListarLibrosDisponibles()
-    {  
+    {
         Console.Clear();
         Console.WriteLine("\n====================== Listar libros disponibles ================================");
         Console.WriteLine("  ID               Título                 Autor              Categoría       Año ");
@@ -312,7 +312,7 @@ class Program
 
             switch (opcion_actualizar_libro)
             {
-                case 1: 
+                case 1:
                     //Función para editar titulo de un libro
                     EditarTituloLibro();
                     break;
@@ -339,8 +339,8 @@ class Program
                     Console.Write("Presiona Enter para continuar...");
                     Console.ReadLine();
                     break;
-            }   
-        }while(opcion_actualizar_libro != 4);
+            }
+        } while (opcion_actualizar_libro != 4);
     }
 
     static void EditarTituloLibro()
@@ -388,62 +388,63 @@ class Program
         string respuesta;
         do
         {
-        Console.Clear();
-        Console.WriteLine("===  Editar año/categoria del libro  ===");
-        Console.Write("Señor usuario ingrese el ID/ISBN del libro: ");
-        string id_isbn = Console.ReadLine() ?? "";
-        Console.WriteLine($"El ID/ISBN: {id_isbn} del libro tiene como año de publicación: 2013 y su categoria es: suspenso,drama.");
-        Console.WriteLine("¿Qué es lo que quieres editar el año o la categoria?(año/categoria)");
-        respuesta = Console.ReadLine() ?? "";
-
-        if (respuesta.ToLower() == "año")
-        {
             Console.Clear();
-            Console.WriteLine("=== Editando el año de la publicación del libro. ===");
-            string nuevo_año_publicacion;
+            Console.WriteLine("===  Editar año/categoria del libro  ===");
+            Console.Write("Señor usuario ingrese el ID/ISBN del libro: ");
+            string id_isbn = Console.ReadLine() ?? "";
+            Console.WriteLine($"El ID/ISBN: {id_isbn} del libro tiene como año de publicación: 2013 y su categoria es: suspenso,drama.");
+            Console.WriteLine("¿Qué es lo que quieres editar el año o la categoria?(año/categoria)");
+            respuesta = Console.ReadLine() ?? "";
 
-            do{
-                Console.Write("Señor usuario ingrese el nuevo año de la publicación del libro:");
-                nuevo_año_publicacion = Console.ReadLine() ?? "";
-                if(!int.TryParse(nuevo_año_publicacion, out _) || nuevo_año_publicacion.Length != 4)
+            if (respuesta.ToLower() == "año")
+            {
+                Console.Clear();
+                Console.WriteLine("=== Editando el año de la publicación del libro. ===");
+                string nuevo_año_publicacion;
+
+                do
                 {
-                    Console.WriteLine("El año no es valido, debe ser un numero de 4 digitos.");
-                }
-            } while(!int.TryParse(nuevo_año_publicacion, out _) || nuevo_año_publicacion.Length != 4);
+                    Console.Write("Señor usuario ingrese el nuevo año de la publicación del libro:");
+                    nuevo_año_publicacion = Console.ReadLine() ?? "";
+                    if (!int.TryParse(nuevo_año_publicacion, out _) || nuevo_año_publicacion.Length != 4)
+                    {
+                        Console.WriteLine("El año no es valido, debe ser un numero de 4 digitos.");
+                    }
+                } while (!int.TryParse(nuevo_año_publicacion, out _) || nuevo_año_publicacion.Length != 4);
 
-            Console.WriteLine("Editando el año de la publicación del libro... ");
-            Console.WriteLine($"Se ha modificado con exito el año de la publicaión del libro {id_isbn}.✅");
-            Console.WriteLine("\n===============================");
-            Console.WriteLine("  Mostrando los cambios           ");
-            Console.WriteLine($"  ID/ISBN del libro: {id_isbn}   ");
-            Console.WriteLine($"  Año de publicacion: {nuevo_año_publicacion} ");
-            Console.WriteLine("===============================");
-            Console.Write("\nPresiona Enter para continuar....");
-            Console.ReadLine(); 
-        }
-        else if(respuesta.ToLower() == "categoria")
-        {
-            Console.Clear();
-            Console.WriteLine("=== Editando la categoria del libro. ==="); 
-            Console.Write("Señor usuario ingrese la nueva categoria del libro: ");
-            string nueva_categoria = Console.ReadLine() ?? "";
-            Console.WriteLine("Se esta editando la categoria del libro... ");
-            Console.WriteLine("Se ha modificado con exito la categoria del libro.✅");
-            Console.WriteLine("\n===============================");
-            Console.WriteLine("  Mostrando los cambios           ");
-            Console.WriteLine($"  ID/ISBN del libro: {id_isbn}   ");
-            Console.WriteLine($"  Categoria: {nueva_categoria} ");
-            Console.WriteLine("===============================");
-            Console.Write("\nPresiona Enter para continuar....");
-            Console.ReadLine();
-        }
-        else
-        {
-            Console.WriteLine("Se ingreso una respuesta invalida, por favor intentalo nuevamente.");
-            Console.WriteLine("Recuerda tienes que responder: año o categoria, gracias."); 
-            Console.Write("Presiona Enter para continuar... ");
-            Console.ReadLine();
-        }
+                Console.WriteLine("Editando el año de la publicación del libro... ");
+                Console.WriteLine($"Se ha modificado con exito el año de la publicaión del libro {id_isbn}.✅");
+                Console.WriteLine("\n===============================");
+                Console.WriteLine("  Mostrando los cambios           ");
+                Console.WriteLine($"  ID/ISBN del libro: {id_isbn}   ");
+                Console.WriteLine($"  Año de publicacion: {nuevo_año_publicacion} ");
+                Console.WriteLine("===============================");
+                Console.Write("\nPresiona Enter para continuar....");
+                Console.ReadLine();
+            }
+            else if (respuesta.ToLower() == "categoria")
+            {
+                Console.Clear();
+                Console.WriteLine("=== Editando la categoria del libro. ===");
+                Console.Write("Señor usuario ingrese la nueva categoria del libro: ");
+                string nueva_categoria = Console.ReadLine() ?? "";
+                Console.WriteLine("Se esta editando la categoria del libro... ");
+                Console.WriteLine("Se ha modificado con exito la categoria del libro.✅");
+                Console.WriteLine("\n===============================");
+                Console.WriteLine("  Mostrando los cambios           ");
+                Console.WriteLine($"  ID/ISBN del libro: {id_isbn}   ");
+                Console.WriteLine($"  Categoria: {nueva_categoria} ");
+                Console.WriteLine("===============================");
+                Console.Write("\nPresiona Enter para continuar....");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Se ingreso una respuesta invalida, por favor intentalo nuevamente.");
+                Console.WriteLine("Recuerda tienes que responder: año o categoria, gracias.");
+                Console.Write("Presiona Enter para continuar... ");
+                Console.ReadLine();
+            }
         } while (respuesta.ToLower() != "año" && respuesta.ToLower() != "categoria");
     }
 
@@ -456,21 +457,21 @@ class Program
         Console.Write($"¿El libro {id_isbn} esta en prestamo actualmente?(S/N)");
         string prestado = Console.ReadLine() ?? "";
 
-        if(prestado.ToUpper() == "S")
+        if (prestado.ToUpper() == "S")
         {
             Console.WriteLine("No se puede eliminar: el libro está prestado actualmente.");
         }
-        else if(prestado.ToUpper() == "N")
+        else if (prestado.ToUpper() == "N")
         {
             Console.Write($"¿Confirmas eliminar el libro con ID/ISBN {id_isbn}? (S/N): ");
             string confirmar = Console.ReadLine() ?? "";
 
             if (confirmar.ToUpper() == "S")
-            {   
+            {
                 Console.WriteLine(" El libro ha sido eliminado correctamente. ✅");
             }
             else
-            {   
+            {
                 Console.WriteLine("Eliminación cancelada.");
             }
         }
@@ -483,6 +484,7 @@ class Program
     }
 
     static void MostrarMenuUsuarios(){}
+
     static void MostrarMenuPrestamos(){}
     static void MostrarMenuBusquedaReportes(){}
     static void MostrarMenuGuardarCargarDatos(){}
