@@ -525,7 +525,7 @@ class Program
                     break;
 
                 case 5:
-                    //Funcion para elminar un usuario
+                    //Funcion para eliminar un usuario
                     EliminarUsuario();
                     break;
 
@@ -539,7 +539,6 @@ class Program
                     Console.WriteLine("Opción invalida. Intentalo nuevamente");
                     Console.Write("Presiona Enter para continuar...");
                     Console.ReadLine();
-                    MostrarMenuLibros();
                     break;
                     
             } 
