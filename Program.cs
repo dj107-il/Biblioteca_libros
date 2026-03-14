@@ -483,7 +483,293 @@ class Program
         Console.ReadLine();
     }
 
-    static void MostrarMenuUsuarios(){}
+    static void MostrarMenuUsuarios()
+    {
+        
+        int menu_usuarios;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("======================");
+            Console.WriteLine("   Menu de Usuarios   ");
+            Console.WriteLine("======================");
+            Console.WriteLine("1. Registrar usuario.");
+            Console.WriteLine("2. Listar usuarios.");
+            Console.WriteLine("3. Ver detalles del usuario(por ID/Documento).");
+            Console.WriteLine("4. Actualizar usuario.");
+            Console.WriteLine("5. Eliminar usuario.");
+            Console.WriteLine("6. Volver al menu principal.");
+            Console.Write("Elija una de las opciones a la que desea ingresar: ");
+            menu_usuarios = int.Parse(Console.ReadLine() ?? "0");
+
+            switch (menu_usuarios)
+            {
+                case 1:
+                    //Funcion registrar usuario
+                    RegistrarUsuario();
+                    break;
+
+                case 2:
+                    //Funcion para listar usuarios
+                    ListarUsuarios();
+                    break;
+
+                case 3:
+                    //Funcion para ver los detalles del usuario(por ID/Documento)
+                    MostrarDetallesUsuario();
+                    break;
+
+                case 4:
+                    //Funcion para ver otro menu que seria la seccion para actualizar un usuario
+                    MenuActualizarUsuario();
+                    break;
+
+                case 5:
+                    //Funcion para elminar un usuario
+                    EliminarUsuario();
+                    break;
+
+                case 6:
+                    Console.WriteLine("Volviendo al menú principal...");
+                    Console.Write("Presiona Enter para continuar... ");
+                    Console.ReadLine();
+                    break;
+                
+                default:
+                    Console.WriteLine("Opción invalida. Intentalo nuevamente");
+                    Console.Write("Presiona Enter para continuar...");
+                    Console.ReadLine();
+                    MostrarMenuLibros();
+                    break;
+                    
+            } 
+        } while (menu_usuarios != 6);
+    }
+
+    static void RegistrarUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("===  Registro de Usuario  ===");
+        Console.Write("Señor usuario ingrese el ID/Documento: ");
+        string id_documento = Console.ReadLine() ?? "";
+
+        Console.Write("Ingresa el nombre: ");
+        string nombre = Console.ReadLine() ?? "";
+
+        Console.Write("Ingresa el apellido: ");
+        string apellido = Console.ReadLine() ?? "";
+
+        Console.Write("Ingresa el telefono de contacto: ");
+        string telefono = Console.ReadLine() ?? "";
+
+        Console.Write("Ingresa el correo electrónico: ");
+        string email = Console.ReadLine() ?? "";
+
+        Console.WriteLine($"\n>> El usuario {nombre} {apellido} ha sido registrado exitosamente con el {id_documento}. ✅");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void ListarUsuarios()
+    {
+        Console.Clear();
+        Console.WriteLine("\n==============================  Listar todos los usuarios  =======================================");
+        Console.WriteLine("ID/Documento      nombre           Apellido        Telefono       Correo Electrónico     Estado     ");
+        Console.WriteLine(" 978-3-16         David             García         3013191210     DavidG@gmail.com       Activo       ");
+        Console.WriteLine(" 978-1-23         Juan              Eureka         3213211311     JEureka@hotmail.com    Activo       ");
+        Console.WriteLine(" 978-4-56        Camilo            Cervantes       3014192310      CamiloC@gmail.com   Desactivado  ");
+        Console.WriteLine("\n>>> Se listarían todos los usuarios registrados en el sistema.");
+        Console.WriteLine("\n==================================================================================================");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void MostrarDetallesUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("==== Ver detalles del usuario (por id/Documento) ===");
+        Console.Write("Señor usuario ingrese el id o documento del usuario registrado: ");
+        string id_documento = Console.ReadLine() ?? "";
+
+        Console.Clear();
+        Console.WriteLine("=====================================================");
+        Console.WriteLine($"⏸  Mostrando los detalles del usuario               ⏸");
+        Console.WriteLine($"⏸ ID/Documento: {id_documento.PadRight(36)}⏸");
+        Console.WriteLine("⏸  Nombres: Juan Alejandro                          ⏸");
+        Console.WriteLine("⏸  Apellidos: Vazquez loaisa                        ⏸");
+        Console.WriteLine("⏸  Telefono: 3013191210                             ⏸");
+        Console.WriteLine("⏸  Correo electrónico: JuanAlejandroV@gmail.com     ⏸");
+        Console.WriteLine("⏸  Estado: Desactivo                                ⏸");
+        Console.WriteLine("======================================================");
+        Console.Write("\nPresiona Enter para continuar...           ");
+        Console.ReadLine();
+    }
+
+    static void MenuActualizarUsuario()
+    {
+        int opcion_actualizar_usuario;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("=================================");
+            Console.WriteLine("    Menú de Actualizar Usuario    ");
+            Console.WriteLine("=================================");
+            Console.WriteLine("1. Editar nombre.");
+            Console.WriteLine("2. Editar contacto de telefono.");
+            Console.WriteLine("3. Activar/desactivar usuario.");
+            Console.WriteLine("4. Volver al menu de los usuario.");
+            Console.Write("Ingresa la opción que deseas ingresar: ");
+            opcion_actualizar_usuario = int.Parse(Console.ReadLine() ?? "0");
+
+            switch (opcion_actualizar_usuario)
+            {
+                case 1:
+                    //Función para editar el nombre de un usuario
+                    EditarNombreUsuario();
+                    break;
+
+                case 2:
+                    //Función para editar el contacto telefonico de un usuario
+                    EditarContactoUsuario();
+                    break;
+
+                case 3:
+                    //Función para Activar/Desactivar el usuario
+                    ActivarDesactivarUsuario();
+                    break;
+
+                case 4:
+                    //Volver al menu de libros
+                    Console.WriteLine("Regresando al menú de usuario...");
+                    Console.Write("Presiona Enter para continuar...");
+                    Console.ReadLine();
+                    break;
+
+                default:
+                    Console.WriteLine("Opción invalida. Intentalo nuevamente.");
+                    Console.Write("Presiona Enter para continuar...");
+                    Console.ReadLine();
+                    break;
+            }
+        } while (opcion_actualizar_usuario != 4);
+        
+    }
+
+    static void EditarNombreUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Editar nombre del usuario ===");
+        Console.Write("Señor usuario ingrese el ID o Documento del usuario: ");
+        string id_documento = Console.ReadLine() ?? "";
+
+        Console.WriteLine($"El id/Documento: {id_documento}  de este usuario tiene como nombre: Luis Fernando.");
+        Console.Write("Señor usuario ingrese el nuevo nombre del usuario: ");
+        string nuevo_nombre = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Editando el nombre del usuario... ");
+        Console.WriteLine("El nombre del usuario se ha cambiado exitosamente. ✅");
+        Console.WriteLine("\n===================================");
+        Console.WriteLine("  Mostrando los cambios del usuario          ");
+        Console.WriteLine($"  ID/Documento del usuario: {id_documento}  ");
+        Console.WriteLine($"  Nombre: {nuevo_nombre}        ");
+        Console.WriteLine("===================================");
+        Console.Write("\nPresiona Enter para continuar....");
+        Console.ReadLine();   
+    }
+
+    static void EditarContactoUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Editar Contacto telefónico del usuario ===");
+        Console.Write("Señor usuario ingrese el ID o Documento del usuario: ");
+        string id_documento = Console.ReadLine() ?? "";
+
+        Console.WriteLine($"El ID/Documento: {id_documento} de este usuario tiene como contacto telefónico: 3124356787");
+        Console.Write("Señor usuario ingrese el nuevo contacto telefónico: ");
+        string nuevo_contacto = Console.ReadLine() ?? "";
+
+        Console.WriteLine("Editando el contacto del usuario... ");
+        Console.WriteLine("El contacto telefónico del usuario se ha cambiado exitosamente. ✅");
+        Console.WriteLine("\n=======================================");
+        Console.WriteLine("  Mostrando los cambios del usuario    ");
+        Console.WriteLine($"  ID/Documento del usuario: {id_documento}   ");
+        Console.WriteLine($"  Contacto: {nuevo_contacto}        ");
+        Console.WriteLine("=======================================");
+        Console.Write("\nPresiona Enter para continuar....");
+        Console.ReadLine();
+    }
+
+    static void ActivarDesactivarUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Activar/Desactivar del Usuario ===");
+        Console.Write("Señor usuario ingrese el ID o Documento del usuario: ");
+        string id_documento = Console.ReadLine() ?? "";
+
+        Random aleatorio = new Random();
+        int estadoRandom = aleatorio.Next(0, 2); // genera 0 o 1
+        string estado = estadoRandom == 1 ? "Activo" : "Desactivado";
+
+        Console.WriteLine($"El id/Documento: {id_documento} del iusuario esta {estado}");
+        Console.WriteLine("¿Señor usuario quieres activar o desactivar el usuario?");
+        string activar_desactivar = Console.ReadLine() ?? "";
+
+        if (activar_desactivar.ToLower() == "activar")
+        {
+            Console.WriteLine("Activando el estado del usuario... ");
+            Console.WriteLine("El estado del usuario se ha activado exitosamente. ✅");
+            Console.WriteLine($"\n  ID/Documento: {id_documento}");
+            Console.WriteLine("  Estado: Activo");
+        }
+        else if(activar_desactivar.ToLower() == "desactivar")
+        {
+            Console.WriteLine("Desactivando el estado del usuario... ");
+            Console.WriteLine("El estado del usuario se ha desactivado exitosamente. ✅");
+            Console.WriteLine($"\n  ID/Documento: {id_documento}");
+            Console.WriteLine("  Estado: Desactivado");
+        }
+        else
+        {
+            Console.WriteLine("Opción no válida, se canceló la operación.");
+        }
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+
+    }
+    static void EliminarUsuario()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Eliminar Usuario ===");
+        Console.Write("Señor usuario ingrese el ID/Documento del usuario: ");
+        string id_documento = Console.ReadLine() ?? "";
+        Console.Write($"Señor usuario ¿Tienes prestamos activos?(S/N)");
+        string activo_prestamo = Console.ReadLine() ?? "";
+
+        if (activo_prestamo.ToUpper() == "S")
+        {
+            Console.WriteLine("No se puede eliminar el usuario, porqué tienes prestamos activos.");
+        }
+        else if (activo_prestamo.ToUpper() == "N")
+        {
+            Console.Write($"¿Confirmas eliminar el usuario con ID/Documento {id_documento}? (S/N): ");
+            string confirmar = Console.ReadLine() ?? "";
+
+            if (confirmar.ToUpper() == "S")
+            {
+                Console.WriteLine("El usuario ha sido eliminado correctamente. ✅");
+            }
+            else
+            {
+                Console.WriteLine("Eliminación cancelada.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Opción invalida. Cancelando la operación de eliminar el usuario...");
+        }
+        Console.Write("Presiona Enter para continuar...");
+        Console.ReadLine();
+    }
 
     static void MostrarMenuPrestamos(){}
     static void MostrarMenuBusquedaReportes(){}
