@@ -960,8 +960,6 @@ class Program
         Console.Write("\nPresiona Enter para continuar...           ");
         Console.ReadLine();
     }
-
-    //por actualizar...
     static void RegistrarDevolucion()
     {
         Console.Clear();
