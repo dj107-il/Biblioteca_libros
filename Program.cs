@@ -770,7 +770,259 @@ class Program
         Console.ReadLine();
     }
 
-    static void MostrarMenuPrestamos(){}
+    static void MostrarMenuPrestamos()
+    {
+        int menu_prestamos;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("======================");
+            Console.WriteLine("   Menu de Préstamos   ");
+            Console.WriteLine("======================");
+            Console.WriteLine("1. Crear préstamos.");
+            Console.WriteLine("2. Listar préstamos.");
+            Console.WriteLine("3. Ver detalles de préstamo(por ID).");
+            Console.WriteLine("4. Registrar devolución.");
+            Console.WriteLine("5. Eliminar préstamo.");
+            Console.WriteLine("6. Volver al menu principal.");
+            Console.Write("Elija una de las opciones a la que desea ingresar: ");
+            menu_prestamos = int.Parse(Console.ReadLine() ?? "0");
+
+            switch (menu_prestamos)
+            {
+                case 1:
+                    //Funcion que crea un prestamo(con validaciones)
+                    CrearPrestamo();
+                    break;
+
+                case 2:
+                    //Funcion para ver un submenu de listar los prestamos
+                    MenuListarPrestamos();
+                    break;
+
+                case 3:
+                    //Funcion para ver los detalles del prestamo(por ID)
+                    MostrarDetallesPrestamo();
+                    break;
+
+                case 4:
+                    //Funcion para ver otro menu que seria la sección de registrar devolución
+                    RegistrarDevolucion();
+                    break;
+
+                case 5:
+                    //Funcion para eliminar un préstamo
+                    EliminarPrestamo();
+                    break;
+
+                case 6:
+                    Console.WriteLine("Volviendo al menú principal...");
+                    Console.Write("Presiona Enter para continuar... ");
+                    Console.ReadLine();
+                    break;
+
+                default:
+                    Console.WriteLine("Opción invalida. Intentalo nuevamente");
+                    Console.Write("\nPresiona Enter para continuar...");
+                    Console.ReadLine();
+                    break;
+            }
+        } while (menu_prestamos != 6);
+    }
+
+    static void CrearPrestamo()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Crear préstamo ===");
+        Console.Write("Ingrese el ID/Documento del usuario: ");
+        string id_usuario = Console.ReadLine() ?? "";
+        Console.Write("Ingrese el ID/ISBN del libro: ");
+        string id_libro = Console.ReadLine() ?? "";
+
+        Console.WriteLine("\nValidaciones que se aplicarían:");
+        Console.WriteLine("  --> Verificar que el usuario existe y está activo.");
+        Console.WriteLine("  --> Verificar que el libro existe y está disponible.");
+        Console.WriteLine("  --> Verificar que el usuario no supera el límite de préstamos activos.");
+        Console.WriteLine($"\nPréstamo del libro {id_libro} al usuario {id_usuario} creado exitosamente. ✅");
+
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void MenuListarPrestamos()
+    {
+        int opcion_prestamo;
+        do
+        {        
+            Console.Clear();
+            Console.WriteLine("====================");
+            Console.WriteLine("  Listar Préstamos  ");
+            Console.WriteLine("====================");
+            Console.WriteLine("1. Listar todos los préstamos. ");
+            Console.WriteLine("2. Listar los préstamos activos.");
+            Console.WriteLine("3. Listar los préstamos cerrados(devueltos)");
+            Console.WriteLine("4. Volver al menú principal. ");
+            Console.WriteLine("¿Que opción desea ingresa?");
+            opcion_prestamo = int.Parse(Console.ReadLine() ?? "0");
+
+            switch (opcion_prestamo)
+            {
+                case 1:
+                    //Función para listar todos los préstamos
+                    ListarTodosPrestamos();
+                    break;
+                
+                case 2: 
+                    //función para listar los préstamos activos que hay
+                    ListarPrestamosActivos();
+                    break;
+
+                case 3:
+                    //Función para listar los préstamos cerrados(devueltos) que hay
+                    ListarPrestamosCerrados();
+                    break;
+
+                case 4:
+                    Console.WriteLine("Volviendo al menú principal... ");
+                    Console.Write("\nPresiona Enter para continuar... ");
+                    Console.ReadLine();
+                    break;
+
+                default: 
+                    Console.WriteLine("La opción que ingresastes es invalida. Intentalo nuevamente... ");
+                    Console.WriteLine("\nPresiona Enter para continuar... ");
+                    Console.ReadLine();
+                    break;
+            }
+        }while(opcion_prestamo != 4);
+    }
+
+    static void ListarTodosPrestamos()
+    {
+        Console.Clear();
+        Console.WriteLine("\n==============================  Listar todos los préstamos  =========================================");
+        Console.WriteLine("ID Préstamo   ID Usuario   ID/ISBN Libro   Fecha Préstamo   Fecha Límite  Fecha Devolución   Estado   ");
+        Console.WriteLine("  P-001         978-3-16      978-1-23        2024-01-10      2024-06-24        null         Activo   ");
+        Console.WriteLine("  P-002         978-4-56      978-3-16        2024-02-05      2024-08-19        null         Cerrado  ");
+        Console.WriteLine("  P-003         978-1-23      978-4-56        2024-03-01      2024-11-15        null         Activo   ");
+        Console.WriteLine("\n>>> Se listarían todos los préstamos registrados en el sistema.");
+        Console.WriteLine("=====================================================================================================");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void ListarPrestamosActivos()
+    {
+        Console.Clear();
+        Console.WriteLine("\n============================== Listar todos los préstamos activos =====================================");
+        Console.WriteLine("ID Préstamo   ID Usuario   ID/ISBN Libro   Fecha Préstamo   Fecha Límite   fecha devolución      Estado  ");
+        Console.WriteLine("  P-010         988-8-19      978-5-25        2024-06-11      2025-01-01        null             Activo  ");
+        Console.WriteLine("  P-020         900-5-59      978-8-18        2024-03-09      2024-09-27        null             Activo  ");
+        Console.WriteLine("  P-070         995-6-29      978-9-57        2024-04-10      2024-10-30        null             Activo  ");
+        Console.WriteLine("\n>>> Se listarían todos los préstamos activados registrados en el sistema.");
+        Console.WriteLine("=======================================================================================================");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void ListarPrestamosCerrados()
+    {
+        Console.Clear();
+        Console.WriteLine("\n==============================  Listar todos los préstamos cerrados(devueltos)  =========================");
+        Console.WriteLine("ID Préstamo   ID Usuario   ID/ISBN Libro   Fecha Préstamo   Fecha Límite   fecha devolución    Estado   ");
+        Console.WriteLine("  P-105         978-9-21      908-6-99        2024-06-09      2025-01-01     2024-12-10        Cerrado   ");
+        Console.WriteLine("  P-096         916-5-61      938-1-20        2024-01-31      2024-08-24     2024-05-30        Cerrado  ");
+        Console.WriteLine("  P-099         935-8-91      918-9-60        2024-08-28      2024-05-30     2024-05-28        Cerrado  ");
+        Console.WriteLine("\n>>> Se listarían todos los préstamos cerrados(devueltos) registrados en el sistema.");
+        Console.WriteLine("\n=========================================================================================================");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void MostrarDetallesPrestamo()
+    {
+        Console.Clear();
+        Console.Write("Señor usuario ingrese el id del préstamo registrado: ");
+        string id_prestamo = Console.ReadLine() ?? "";
+
+        Console.Clear();
+        Console.WriteLine("=====================================================");
+        Console.WriteLine($"⏸  Mostrando los detalles del préstamo             ⏸");
+        Console.WriteLine($"⏸  ID: {id_prestamo.PadRight(44)}⏸");
+        Console.WriteLine("⏸  ID: Usuario: 978-3-16                           ⏸");
+        Console.WriteLine("⏸  ID/ISBN Libro: 978-1-23                         ⏸");
+        Console.WriteLine("⏸  Fecha préstamo: 2024-06-27                      ⏸");
+        Console.WriteLine("⏸  Fecha limite: 2024-10-31                        ⏸");
+        Console.WriteLine("⏸  Fecha devolución: 2024-10-27                    ⏸");
+        Console.WriteLine("⏸  Estado: Activo                                  ⏸");
+        Console.WriteLine("=====================================================");
+        Console.Write("\nPresiona Enter para continuar...           ");
+        Console.ReadLine();
+    }
+
+    //por actualizar...
+    static void RegistrarDevolucion()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Registrar devolución ===");
+        Console.Write("Señor usuario ingrese el ID del prestamo: ");
+        string id_prestamo = Console.ReadLine() ?? "";
+
+        Console.WriteLine($"\nProcesando devolución del préstamo {id_prestamo}...");
+        Console.WriteLine("El préstamo ha sido marcado como Cerrado. ✅");
+        Console.WriteLine("El libro ha sido marcado como Disponible. ✅");
+        Console.WriteLine("Fecha de devolución registrada: 2024-10-27");
+
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void EliminarPrestamo()
+    {
+        Console.Clear();
+        Console.WriteLine("===  Eliminar Préstamo  ===");
+        Console.Write("Señor usuario ingrese el ID del prestamo: ");
+        string id_prestamo = Console.ReadLine() ?? "";
+
+        Console.Write($"¿El préstamo {id_prestamo} está cerrado(devuelto)? (S/N): ");
+        string cerrado = Console.ReadLine() ?? "";
+
+        if (cerrado.ToUpper() == "S")
+        {
+            Console.Write($"¿Confirmas eliminar el préstamo {id_prestamo}? (S/N): ");
+            string confirmar = Console.ReadLine() ?? "";
+
+            if (confirmar.ToUpper() == "S")
+                Console.WriteLine("El préstamo del libro ha sido eliminado exitosamente. ✅");
+            else
+                Console.WriteLine("La eliminación del préstamo ha sido cancelado.❌");
+        }
+        else if (cerrado.ToUpper() == "N")
+        {
+            Console.Write("¿El préstamo fue creado por error? (S/N): ");
+            string error = Console.ReadLine() ?? "";
+
+            if (error.ToUpper() == "S")
+            {
+                Console.WriteLine("Eliminando préstamo creado por error...");
+                Console.WriteLine("El libro ha sido marcado como Disponible nuevamente. ✅");
+                Console.WriteLine("El préstamo del libro ha sido eliminado exitosamente. ✅");
+            }
+            else
+            {
+                Console.WriteLine("El préstamo no se puede eliminar porque está activo.");
+                Console.WriteLine("Debe registrar la devolución del libro primero, gracias.");
+            }
+        }
+        else
+        {
+            Console.WriteLine(">> Opción inválida. Cancelando la operación de eliminación del préstamo...");
+        }
+        
+
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+    }
     static void MostrarMenuBusquedaReportes(){}
     static void MostrarMenuGuardarCargarDatos(){}
 }
