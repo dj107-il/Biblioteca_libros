@@ -960,7 +960,6 @@ class Program
         Console.ReadLine();
     }
 
-    //por actualizar...
     static void RegistrarDevolucion()
     {
         Console.Clear();
@@ -1023,6 +1022,7 @@ class Program
         Console.Write("\nPresiona Enter para continuar...");
         Console.ReadLine();
     }
+    
     static void MostrarMenuBusquedaReportes(){}
     static void MostrarMenuGuardarCargarDatos(){}
 }
