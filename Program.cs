@@ -1336,5 +1336,100 @@ class Program
         Console.Write("Presiona Enter para continuar... ");
         Console.ReadLine();
     }
-    static void MostrarMenuGuardarCargarDatos(){}
+    static void MostrarMenuGuardarCargarDatos()
+    {
+        int menu_datos;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("===============================");
+            Console.WriteLine("  Menú Cuardar/Cargar Datos ");
+            Console.WriteLine("===============================");
+            Console.WriteLine("1. Guardar datos(libros/usuarios/préstamos).");
+            Console.WriteLine("2. Cargar Datos.");
+            Console.WriteLine("3. Reiniciar Datos.");
+            Console.WriteLine("4. Volver al menú principal.");
+            Console.Write("Elija una de las opciones a la que desea ingresar: ");
+            menu_datos = int.Parse(Console.ReadLine() ?? "0");
+
+            switch (menu_datos)
+            {
+                case 1:
+                    //Funcion para Guardar datos de libros,usuarios y préstamos
+                    GuardarDatos();
+                    break;
+
+                case 2:
+                    //Funcion para cargar datos
+                    CargarDatos();
+                    break;
+
+                case 3:
+                    //Funcion para reiniciar datos (vaciar todo y pedir confirmación
+                    ReiniciarDatos();
+                    break;
+
+                case 4:
+                    Console.WriteLine("Volviendo al menú principal...");
+                    Console.Write("Presiona Enter para continuar... ");
+                    Console.ReadLine();
+                    break;
+
+                default:
+                    Console.WriteLine("Opción invalida. Intentalo nuevamente");
+                    Console.Write("\nPresiona Enter para continuar...");
+                    Console.ReadLine();
+                    break;
+            }
+        } while (menu_datos != 4);   
+    }
+
+    static void GuardarDatos()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Guardar datos de usuarios,libros y préstamos ===");
+        Console.WriteLine("Se estan guardando los libros...");
+        Console.WriteLine("Guardando los usuarios...");
+        Console.WriteLine("Guardando los préstamos...");
+        Console.WriteLine("Se guardo todos los datos con éxito.✅");
+        Console.Write("Presiona Enter para continuar... ");
+        Console.ReadLine();
+    }
+
+    static void CargarDatos()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Cargar datos ===");
+        Console.WriteLine("Cargando los datos de libros");
+        Console.WriteLine("Cargando los datos de usuarios");
+        Console.WriteLine("Cargando los datos de préstamos");
+        Console.WriteLine("Se completo la carga de los datos exitosamente.✅");
+        Console.Write("Presiona Enter para continuar...");
+        Console.ReadLine();
+    }
+
+    static void ReiniciarDatos()
+    {
+        Console.Clear();
+        Console.WriteLine("=== Reiniciar todos los datos ===");
+        Console.WriteLine("Señor usuario ¿quieres reiniciar todos los datos(usuarios,libros y préstamos)(si/no)?");
+        string confirmacion = Console.ReadLine() ?? "";
+
+        if(confirmacion.ToLower() == "si")
+        {
+            Console.WriteLine("Reiniciando datos");
+            Console.WriteLine("se reiniciaron exitosamente todos los datos.✅");
+        }
+        else if(confirmacion.ToLower() == "no")
+        {
+            Console.WriteLine("Cancelando el reinicio de datos...");
+            Console.WriteLine("Se cancelo El reinicio de los datos.❌");
+        }
+        else
+        {
+            Console.WriteLine("Se cancelo el reinicio de los datos, ya que ingreso una opción invalida.");
+        }
+        Console.Write("Presiona Enter para continuar...");
+        Console.ReadLine();
+    }
 }
