@@ -83,25 +83,27 @@ class Program
 
     static void ConfirmarSalidaYGuardar()
     {
-        Console.WriteLine("Señor usuario quiere ¿Guardar los datos antes de salir? (S/N)");
-        string respuesta = Console.ReadLine() ?? "";
+        Console.Clear();
+        Console.WriteLine("Señor usuario quiere ¿Guardar los datos antes de salir del sistema? (S/N)");
+        string confirmacion_salir = Console.ReadLine() ?? "";
 
-        if(respuesta.ToUpper() == "S")
+        if(confirmacion_salir.ToUpper() == "S")
         {
-            Console.WriteLine("Guardando datos...");
-            Console.WriteLine("Los datos se han guardado exitosamente. ✅");
-            Console.WriteLine("¡Hasta luego!");
+            Console.WriteLine("Guardando los datos...");
+            Console.WriteLine("Los datos se guardaron exitosamente. ✅");
+            Console.WriteLine("Gracias por usar nuestro sistema. ¡Hasta luego!");
         }
-        else if(respuesta.ToUpper() == "N")
+        else if(confirmacion_salir.ToUpper() == "N")
         {
-            Console.WriteLine("Saliendo sin guardar...");
-            Console.WriteLine("🔁🔁🔁");
-            Console.WriteLine("Has salido sin guardar los datos exitosamente.✅");
-            Console.WriteLine("¡Hasta luego!");
+            Console.WriteLine("Saliendo sin guardar los datos...");
+            Console.WriteLine("Cerrando el sistema...");
+            Console.WriteLine("Has salido exitosamente sin guardar los datos.✅");
+            Console.WriteLine("Gracias por usar nuestro sistema. ¡Hasta luego!");
         }
         else
         {
-            Console.WriteLine("respuesta invalida. Se canceló la salida...");
+            Console.WriteLine("Señor usuario la respuesta que ingresastes es invalida.");
+            Console.WriteLine("Por lo tanto se canceló la operación de guardar los datos para salir.");       
         }
     }
 
