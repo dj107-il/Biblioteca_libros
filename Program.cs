@@ -284,16 +284,37 @@ class Program
         Console.WriteLine("==== Ver detalles del libro (por id/ISBN) ===");
         Console.Write("Señor usuario ingrese el id o ISBN del libro: ");
         string id_isbn = Console.ReadLine() ?? "";
+
+        // Objetos de prueba 
+        Libro libro1 = new Libro(
+            "Cien años de soledad", 
+            "García Márquez", 
+            "978-3-16", 
+            "Novela", 
+            1967, 
+            true);
+
+        Libro libro2 = new Libro(
+            "Las cien maravillas",
+            "Fernando Marquez",
+            "978-2-13",
+            "Drama,comedia",
+            1977,
+            true
+        );
+
         Console.Clear();
-        Console.WriteLine("=================================================");
-        Console.WriteLine($"⏸  Mostrando los detalles del libro           ⏸");
-        Console.WriteLine($"⏸  ID/ISBN: {id_isbn.PadRight(35)}⏸");
-        Console.WriteLine("⏸  Titulo: Los cien años de maravilla         ⏸");
-        Console.WriteLine("⏸  Autor: Luis Fernando Sanchez               ⏸");
-        Console.WriteLine("⏸  Categoria: Nostalgia, romance.             ⏸");
-        Console.WriteLine("⏸  Año de publicación: 2021                   ⏸");
-        Console.WriteLine("⏸  Disponible: Si                             ⏸");
-        Console.WriteLine("================================================");
+        Console.WriteLine("=== Libro 1 ===");
+        libro1.ResumenCorto();
+        libro1.DetalleCompleto(); // <-- Aunque ya tiene validacion adentro de la clase
+        Console.WriteLine($"Disponible: {(libro1.Disponible ? "Sí" : "No")}");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+
+        Console.WriteLine("\n=== Libro 2 ===");
+        libro2.ResumenCorto();
+        libro2.DetalleCompleto(); // <-- Aunque ya tiene validacion adentro de la clase
+        Console.WriteLine($"Disponible: {(libro2.Disponible ? "Sí" : "No")}");
         Console.Write("\nPresiona Enter para continuar...           ");
         Console.ReadLine();
     }
@@ -594,17 +615,39 @@ class Program
         Console.Write("Señor usuario ingrese el id o documento del usuario registrado: ");
         string id_documento = Console.ReadLine() ?? "";
 
+        // Objetos de prueba 
+            Usuario usuario1 = new Usuario(
+            "Luis",
+            "Sanchez",
+            "1012312122",
+            "Dc@gmail.com",
+            "3013212422",
+            false
+        );
+
+        Usuario usuario2 = new Usuario(
+            "Fernando",
+            "Palomo",
+            "13412-12-1",
+            "fernandoP@hotmail.com",
+            "3013212132",
+            true
+        );
+
         Console.Clear();
-        Console.WriteLine("=====================================================");
-        Console.WriteLine($"⏸  Mostrando los detalles del usuario               ⏸");
-        Console.WriteLine($"⏸ ID/Documento: {id_documento.PadRight(36)}⏸");
-        Console.WriteLine("⏸  Nombres: Juan Alejandro                          ⏸");
-        Console.WriteLine("⏸  Apellidos: Vazquez loaisa                        ⏸");
-        Console.WriteLine("⏸  Telefono: 3013191210                             ⏸");
-        Console.WriteLine("⏸  Correo electrónico: JuanAlejandroV@gmail.com     ⏸");
-        Console.WriteLine("⏸  Estado: Desactivo                                ⏸");
-        Console.WriteLine("======================================================");
-        Console.Write("\nPresiona Enter para continuar...           ");
+        Console.WriteLine("=== Usuario 1 ===");
+        usuario1.ResumenCorto();
+        usuario1.DetalleCompleto(); // <-- Aunque ya tiene validacion adentro de la clase
+        Console.WriteLine($"Activo: {(usuario1.Activo ? "Sí" : "No")}");
+        Console.Write("\nPresiona Enter para continuar...");
+        Console.ReadLine();
+
+        Console.Clear();
+        Console.WriteLine("=== Usuario 2 ===");
+        usuario2.ResumenCorto();
+        usuario2.DetalleCompleto(); // <-- Aunque ya tiene validacion adentro de la clase
+        Console.WriteLine($"Activo: {(usuario2.Activo ? "Sí" : "No")}");
+        Console.Write("\nPresiona Enter para continuar...");
         Console.ReadLine();
     }
 
@@ -949,18 +992,25 @@ class Program
         Console.Write("Señor usuario ingrese el id del préstamo registrado: ");
         string id_prestamo = Console.ReadLine() ?? "";
 
+        // Objetos de prueba
+        Prestamo prestamo1 = new Prestamo(
+            "P001",
+            "1012312122",                        
+            "978-3-16",   
+            new DateTime(2024, 1, 11),
+            new DateTime(2024, 6, 25),
+            null,
+            EstadoPrestamo.Activo
+        );
+
         Console.Clear();
-        Console.WriteLine("=====================================================");
-        Console.WriteLine($"⏸  Mostrando los detalles del préstamo             ⏸");
-        Console.WriteLine($"⏸  ID: {id_prestamo.PadRight(44)}⏸");
-        Console.WriteLine("⏸  ID: Usuario: 978-3-16                           ⏸");
-        Console.WriteLine("⏸  ID/ISBN Libro: 978-1-23                         ⏸");
-        Console.WriteLine("⏸  Fecha préstamo: 2024-06-27                      ⏸");
-        Console.WriteLine("⏸  Fecha limite: 2024-10-31                        ⏸");
-        Console.WriteLine("⏸  Fecha devolución: 2024-10-27                    ⏸");
-        Console.WriteLine("⏸  Estado: Activo                                  ⏸");
-        Console.WriteLine("=====================================================");
-        Console.Write("\nPresiona Enter para continuar...           ");
+        Console.WriteLine("=== Préstamo 1 ===");
+        prestamo1.ResumenCorto();
+        prestamo1.DetalleCompleto(); // <-- Aunque ya tiene validacion adentro de la clase
+        Console.WriteLine($"Estado: {prestamo1.Estado}");
+        Console.WriteLine($"Esta vencido: {(prestamo1.EstaVencido() ? "Sí" : "No")}");
+        Console.WriteLine($"Días transcurridos: {prestamo1.DiasTranscurridos()}");
+        Console.Write("\nPresiona Enter para continuar...");
         Console.ReadLine();
     }
 
