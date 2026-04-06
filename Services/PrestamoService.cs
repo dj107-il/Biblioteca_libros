@@ -10,7 +10,7 @@ namespace Biblioteca_libros
             Console.WriteLine($">> Préstamo '{prestamo.IdPrestamo}' agregado correctamente.");
         }
 
-                public bool ActualizarPrestamo(Prestamo prestamoActualizado)
+        public bool ActualizarPrestamo(Prestamo prestamoActualizado)
         {
             Prestamo? existente = ObtenerPorId(prestamoActualizado.IdPrestamo);
             if (existente is null)
