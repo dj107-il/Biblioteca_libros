@@ -10,6 +10,24 @@ namespace Biblioteca_libros
             Console.WriteLine($">> Préstamo '{prestamo.IdPrestamo}' agregado correctamente.");
         }
 
+                public bool ActualizarPrestamo(Prestamo prestamoActualizado)
+        {
+            Prestamo? existente = ObtenerPorId(prestamoActualizado.IdPrestamo);
+            if (existente is null)
+            {
+                return false;
+            }
+
+            existente.IdUsuario = prestamoActualizado.IdUsuario;
+            existente.IdLibro = prestamoActualizado.IdLibro;
+            existente.FechaPrestamo = prestamoActualizado.FechaPrestamo;
+            existente.FechaLimite = prestamoActualizado.FechaLimite;
+            existente.FechaDevolucion = prestamoActualizado.FechaDevolucion;
+            existente.Estado = prestamoActualizado.Estado;
+            return true;
+        }
+
+
         public void EliminarPrestamo(string idPrestamo)
         {
             for (int i = 0; i < prestamos.Count; i++)
