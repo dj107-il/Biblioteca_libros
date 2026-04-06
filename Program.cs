@@ -10,6 +10,21 @@ class Program
     static void Main(string[] args)
     {
         MostrarBienvenida();
+        Console.Write("Presiona Enter para continuar...");
+        Console.ReadLine();
+        Console.Clear();
+
+        // Comparación Array vs List
+        ArrayVsList.Comparar();
+        Console.Write("Presiona Enter para continuar...");
+        Console.ReadLine();
+        Console.Clear();
+
+        // Pruebas de servicios
+        PruebasServicios();
+        Console.Write("Presiona Enter para continuar...");
+        Console.ReadLine();
+        Console.Clear();
         MostrarMenuPrincipal();
     }
 
@@ -1456,7 +1471,7 @@ class Program
         Console.WriteLine("Cargando los datos de usuarios");
         Console.WriteLine("Cargando los datos de préstamos");
         Console.WriteLine("Se completo la carga de los datos exitosamente.✅");
-        Console.Write("Presiona Enter para continuar...");
+        Console.Write("Presiona Enter Ñpara continuar...");
         Console.ReadLine();
     }
 
@@ -1483,5 +1498,75 @@ class Program
         }
         Console.Write("Presiona Enter para continuar...");
         Console.ReadLine();
+    }
+
+    static void PruebasServicios()
+    {
+        Console.WriteLine("=== Pruebas de Servicios ===");
+
+        // ── LibroService ─────────────────────────────────────────
+        LibroServices libroService = new LibroServices();
+
+        libroService.AgregarLibro(new Libro("Cien años de soledad", "García Márquez", "978-3-16", "Novela", 1967, true));
+        libroService.AgregarLibro(new Libro("El Principito", "Saint-Exupéry", "978-1-23", "Infantil", 1943, false));
+        libroService.AgregarLibro(new Libro("Don Quijote", "Cervantes", "978-4-56", "Clásico", 1605, true));
+
+        Console.WriteLine("\n-- Todos los libros --");
+        libroService.ListarLibros();
+
+        Console.WriteLine("\n-- Buscar por autor: García --");
+        libroService.BuscarPorAutor("García");
+
+        Console.WriteLine("\n-- Ordenar por título --");
+        libroService.OrdenarPorTitulo();
+        libroService.ListarLibros();
+
+        Console.WriteLine("\n-- KPIs Libros --");
+        Console.WriteLine($"Total libros: {libroService.TotalLibros()}");
+        libroService.LibrosDisponibles();
+        libroService.LibrosPrestados();
+
+        // ── UsuarioService ───────────────────────────────────────
+        UsuarioService usuarioService = new UsuarioService();
+
+        usuarioService.AgregarUsuario(new Usuario("Luis", "Sanchez", "1012312122", "luis@gmail.com", "3013212422", true));
+        usuarioService.AgregarUsuario(new Usuario("Fernando", "Palomo", "1341212", "fernando@hotmail.com", "3013212132", false));
+
+        Console.WriteLine("\n-- Todos los usuarios --");
+        usuarioService.ListarUsuarios();
+
+        Console.WriteLine("\n-- Buscar por nombre: Luis --");
+        usuarioService.BuscarPorNombre("Luis");
+
+        Console.WriteLine("\n-- Ordenar por nombre --");
+        usuarioService.OrdenarPorNombre();
+        usuarioService.ListarUsuarios();
+
+        Console.WriteLine("\n-- KPIs Usuarios --");
+        Console.WriteLine($"Total usuarios: {usuarioService.TotalUsuarios()}");
+        usuarioService.UsuariosActivos();
+        usuarioService.UsuariosInactivos();
+
+        // ── PrestamoService ──────────────────────────────────────
+        PrestamoService prestamoService = new PrestamoService();
+
+        prestamoService.AgregarPrestamo(new Prestamo("P001", "1012312122", "978-3-16", new DateTime(2024, 1, 11), new DateTime(2024, 6, 25), null, EstadoPrestamo.Activo));
+        prestamoService.AgregarPrestamo(new Prestamo("P002", "1341212", "978-1-23", new DateTime(2024, 3, 5), new DateTime(2024, 9, 5), new DateTime(2024, 8, 20), EstadoPrestamo.Devuelto));
+
+        Console.WriteLine("\n-- Todos los préstamos --");
+        prestamoService.ListarPrestamos();
+
+        Console.WriteLine("\n-- Buscar por estado: Activo --");
+        prestamoService.BuscarPorEstado(EstadoPrestamo.Activo);
+
+        Console.WriteLine("\n-- Ordenar por fecha límite --");
+        prestamoService.OrdenarPorFechaLimite();
+
+        Console.WriteLine("\n-- KPIs Préstamos --");
+        Console.WriteLine($"Total préstamos: {prestamoService.TotalPrestamos()}");
+        prestamoService.PrestamosActivos();
+        prestamoService.PrestamosDevueltos();
+        prestamoService.PrestamosVencidos();
+        prestamoService.PromedioDiasPrestamo();
     }
 }
