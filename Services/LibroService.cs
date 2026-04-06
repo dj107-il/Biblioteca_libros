@@ -1,6 +1,6 @@
 namespace Biblioteca_libros
 {
-    public class LibroServices
+    public class LibroService
     {
         private List<Libro> libros = new List<Libro>();
 
@@ -93,6 +93,22 @@ namespace Biblioteca_libros
         {
             libros = libros.OrderBy(l => l.AñoPublicacion).ToList();
             Console.WriteLine(">> Libros ordenados por año de publicación.");
+        }
+
+            public bool ActualizarLibro(Libro libroActualizado)
+        {
+            Libro? existente = ObtenerPorIsbn(libroActualizado.IdIsbn);
+            if (existente is null)
+            {
+                return false;
+            }
+
+            existente.Titulo = libroActualizado.Titulo;
+            existente.Autor = libroActualizado.Autor;
+            existente.Categoria = libroActualizado.Categoria;
+            existente.AñoPublicacion = libroActualizado.AñoPublicacion;
+            existente.Disponible = libroActualizado.Disponible;
+            return true;
         }
 
         
