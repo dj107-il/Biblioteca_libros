@@ -95,7 +95,7 @@ namespace Biblioteca_libros
             Console.WriteLine(">> Libros ordenados por año de publicación.");
         }
 
-            public bool ActualizarLibro(Libro libroActualizado)
+        public bool ActualizarLibro(Libro libroActualizado)
         {
             Libro? existente = ObtenerPorIsbn(libroActualizado.IdIsbn);
             if (existente is null)
