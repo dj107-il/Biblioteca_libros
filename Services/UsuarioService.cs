@@ -29,6 +29,23 @@ namespace Biblioteca_libros
             return usuarios;
         }
 
+        public bool ActualizarUsuario(Usuario usuarioActualizado)
+        {
+            Usuario? existente = ObtenerPorDocumento(usuarioActualizado.IdDocumento);
+            if (existente is null)
+            {
+                return false;
+            }
+
+            existente.Nombre = usuarioActualizado.Nombre;
+            existente.Apellido = usuarioActualizado.Apellido;
+            existente.CorreoElectronico = usuarioActualizado.CorreoElectronico;
+            existente.TelefonoContacto = usuarioActualizado.TelefonoContacto;
+            existente.Activo = usuarioActualizado.Activo;
+            return true;
+        }
+
+
         public void ListarUsuarios()
         {
             Console.WriteLine(">> Lista de Usuarios:");
