@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Biblioteca_libros;
 
-class Prestamo
+public class Prestamo
 {
     public string IdPrestamo { get; set; }
     public string IdUsuario {get; set; }

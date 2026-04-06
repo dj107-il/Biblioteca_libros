@@ -1,6 +1,6 @@
 namespace Biblioteca_libros
 {
-    enum EstadoPrestamo
+    public enum EstadoPrestamo
     {
         Activo, 
         Devuelto,
