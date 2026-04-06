@@ -77,5 +77,83 @@ namespace Biblioteca_libros
                 Console.WriteLine(prestamo.ToString());
             }
         }
+
+        public int TotalPrestamos()
+        {
+            return prestamos.Count;
+        }
+
+        public void PrestamosActivos()
+        {
+            Console.WriteLine(">> Préstamos activos:");
+            bool encontrado = false;
+            foreach (Prestamo prestamo in prestamos)
+            {
+                if (prestamo.Estado == EstadoPrestamo.Activo)
+                {
+                    Console.WriteLine(prestamo.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine(">> No se encontraron préstamos activos.");
+            }
+        }
+
+        public void PrestamosVencidos()
+        {
+            Console.WriteLine(">> Préstamos vencidos:");
+            bool encontrado = false;
+            foreach (Prestamo prestamo in prestamos)
+            {
+                if (prestamo.EstaVencido())
+                {
+                    Console.WriteLine(prestamo.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine(">> No se encontraron préstamos vencidos.");
+            }
+        }
+
+        public void PrestamosDevueltos()
+        {
+            Console.WriteLine(">> Préstamos devueltos:");
+            bool encontrado = false;
+            foreach (Prestamo prestamo in prestamos)
+            {
+                if (prestamo.Estado == EstadoPrestamo.Devuelto)
+                {
+                    Console.WriteLine(prestamo.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine(">> No se encontraron préstamos devueltos.");
+            }
+        }
+
+        public void PromedioDiasPrestamo()
+        {
+            if (prestamos.Count == 0)
+            {
+                Console.WriteLine(">> No hay préstamos registrados para calcular el promedio de días.");
+                return;
+            }
+
+            double totalDias = 0;
+            foreach (Prestamo prestamo in prestamos)
+            {
+                totalDias += prestamo.DiasTranscurridos();
+            }
+            double promedio = totalDias / prestamos.Count;
+            Console.WriteLine($">> Promedio de días desde el préstamo: {promedio:F2} días.");
+        }
+
+
     }
 }

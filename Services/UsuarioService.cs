@@ -73,5 +73,47 @@ namespace Biblioteca_libros
             usuarios.Sort((u1, u2) => string.Compare(u1.Nombre, u2.Nombre, StringComparison.OrdinalIgnoreCase));
             Console.WriteLine(">> Usuarios ordenados por nombre.");
         }
+
+        public int TotalUsuarios()
+        {
+            return usuarios.Count;
+        }
+
+        public void UsuariosActivos()
+        {
+            Console.WriteLine(">> Usuarios activos:");
+            bool encontrado = false;
+            foreach (Usuario usuario in usuarios)
+            {
+                if (usuario.Activo)
+                {
+                    Console.WriteLine(usuario.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine(">> No se encontraron usuarios activos.");
+            }
+        }
+
+        public void UsuariosInactivos()
+        {
+            Console.WriteLine(">> Usuarios inactivos:");
+            bool encontrado = false;
+            foreach (Usuario usuario in usuarios)
+            {
+                if (!usuario.Activo)
+                {
+                    Console.WriteLine(usuario.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine(">> No se encontraron usuarios inactivos.");
+            }
+        }
+
     }
 }

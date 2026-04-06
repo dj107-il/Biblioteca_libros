@@ -95,6 +95,41 @@ namespace Biblioteca_libros
             Console.WriteLine(">> Libros ordenados por año de publicación.");
         }
 
-        
+        public int TotalLibros()
+        {
+            return libros.Count;
+        }
+
+        public void LibrosDisponibles()
+        {
+            Console.WriteLine(">> Libros disponibles:");
+            bool encontrado = false;
+            foreach (Libro libro in libros)
+            {
+                if (libro.Disponible)
+                {
+                    Console.WriteLine(libro.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+                Console.WriteLine(">> No hay libros disponibles en este momento.");
+        }
+
+        public void LibrosPrestados()
+        {
+            Console.WriteLine(">> Libros prestados:");
+            bool encontrado = false;
+            foreach (Libro libro in libros)
+            {
+                if (!libro.Disponible)
+                {
+                    Console.WriteLine(libro.ToString());
+                    encontrado = true;
+                }
+            }
+            if (!encontrado)
+                Console.WriteLine(">> No hay libros prestados en este momento.");
+        }
     }
 }
