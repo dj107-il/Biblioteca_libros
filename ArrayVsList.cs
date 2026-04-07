@@ -4,42 +4,35 @@ namespace Biblioteca_libros
     {
         public static void Comparar()
         {
-            // ── ARRAY ────────────────────────────────────────────
-            // Tamaño fijo, debes saber cuántos elementos habrá
-            string[] titulosArray = new string[3];
-            titulosArray[0] = "Cien años de soledad";
-            titulosArray[1] = "El Principito";
-            titulosArray[2] = "Don Quijote";
+            string[] coleccionInicial = new string[3];
+            coleccionInicial[0] = "Cien años de soledad";
+            coleccionInicial[1] = "El Principito";
+            coleccionInicial[2] = "Don Quijote";
 
-            Console.WriteLine("=== Con Array ===");
-            foreach (string titulo in titulosArray)
+            Console.WriteLine("=== Colección Inicial ===");
+            foreach (string titulo in coleccionInicial)
             {
-                Console.WriteLine($"  - {titulo}");
+                Console.WriteLine($"- {titulo}");
             }
-            Console.WriteLine($"Total: {titulosArray.Length}");
+            Console.WriteLine($"Total: {coleccionInicial.Length}");
 
-            // ── LIST ─────────────────────────────────────────────
-            // Tamaño dinámico, crece según necesites
-            List<string> titulosList = new List<string>();
-            titulosList.Add("Cien años de soledad");
-            titulosList.Add("El Principito");
-            titulosList.Add("Don Quijote");
-            titulosList.Add("Harry Potter"); // ← con array esto no era posible sin redimensionar
+            List<string> coleccionAmpliada = new List<string>();
+            coleccionAmpliada.Add("Cien años de soledad");
+            coleccionAmpliada.Add("El Principito");
+            coleccionAmpliada.Add("Don Quijote");
+            coleccionAmpliada.Add("Harry Potter");
 
-            Console.WriteLine("\n=== Con List ===");
-            foreach (string titulo in titulosList)
+            Console.WriteLine("\n=== Colección Ampliada ===");
+            foreach (string titulo in coleccionAmpliada)
             {
-                Console.WriteLine($"  - {titulo}");
+                Console.WriteLine($"- {titulo}");
             }
-            Console.WriteLine($"Total: {titulosList.Count}");
+            Console.WriteLine($"Total: {coleccionAmpliada.Count}");
 
-            // ── DIFERENCIAS ──────────────────────────────────────
-            Console.WriteLine("\n=== Diferencias ===");
-            Console.WriteLine("Array: tamaño fijo, no puede crecer.");
-            Console.WriteLine("List:  tamaño dinámico, crece con Add().");
-            Console.WriteLine("Array: usa .Length para contar.");
-            Console.WriteLine("List:  usa .Count para contar.");
-            Console.WriteLine("List:  tiene métodos como Add(), Remove(), Sort().");
+            Console.WriteLine("\n=== Resumen ===");
+            Console.WriteLine("La primera colección mantiene una cantidad fija de títulos.");
+            Console.WriteLine("La segunda colección permite agregar más títulos con facilidad.");
+            Console.WriteLine("Ambas opciones sirven para organizar información del sistema.");
         }
     }
 }

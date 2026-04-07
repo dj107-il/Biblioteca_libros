@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Biblioteca_libros/1.0.0": {
+        "runtime": {
+          "Biblioteca_libros.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Biblioteca_libros/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
